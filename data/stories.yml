@@ -1,0 +1,140 @@
+version: "3.1"
+
+stories:
+
+- story: happy path
+  steps:
+  - intent: greet
+  - action: action_Greet_byTime
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+
+- story: sad path 1
+  steps:
+  - intent: greet
+  - action: action_Greet_byTime
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_happy
+
+- story: sad path 2
+  steps:
+  - intent: greet
+  - action: action_Greet_byTime
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: deny
+  - action: utter_goodbye
+
+- story: product_list_path
+  steps:
+    - intent: product_list
+    - action: action_get_productlist
+
+- story: products_check_path
+  steps:
+    - intent: product_check
+    - action: utter_check_products
+
+- story: search_product_path
+  steps:
+    - intent: search_product
+    - action: action_search_product
+    - action: utter_did_that_help
+
+- story: product_check_story
+  steps:
+  - intent: product_check
+  - action: utter_check_products
+  - intent: affirm
+  - action: action_get_productlist
+  - action: utter_any_other
+
+- story: thanking_path
+  steps:
+  - intent: thankyou
+  - action: utter_welcome
+
+- story: search_product_sucessfull_path
+  steps:
+  - intent: search_product
+  - action: action_search_product
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_welcome
+  - action: utter_any_other
+
+- story: search_product_fail_path
+  steps:
+  - intent: search_product
+  - action: action_search_product
+  - action: utter_did_that_help
+  - intent: deny
+    entities:
+      - product: No
+  - action: action_search_product
+  - action: utter_did_that_help
+
+
+- story: interactive_story_1
+  steps:
+  - intent: search_product
+    entities:
+    - product: milo
+  - action: action_search_product
+  - action: utter_did_that_help
+  - intent: deny
+    entities:
+      - product: No
+  - action: action_search_product
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_welcome
+  - action: utter_any_other
+
+
+- story: get_weather_based_products_path
+  steps:
+  - intent: weather_recommendations
+  - action: action_weather_based_products
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_any_other
+
+- story: show_weather_path
+  steps:
+  - intent: get_weather
+  - action: action_tell_weather
+  - action: utter_any_other
+
+- story: get_weather_based_products_path_1
+  steps:
+  - intent: weather_recommendations
+  - action: action_weather_based_products
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_any_other
+  - intent: deny
+  - action: utter_sorry
+  - action: utter_thanking
+  - action: utter_any_other
+
+- story: get_engagements_path
+  steps:
+  - intent: affirm
+  - action: utter_did_that_help
+
+- story: get_engagements_path_1
+  steps:
+  - intent: affirm
+  - action: utter_did_that_help
+  - intent: deny
+  - action: utter_sorry
+  - action: utter_thanking
+  - action: utter_any_other

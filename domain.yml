@@ -1,0 +1,61 @@
+version: '3.1'
+intents:
+- affirm
+- bot_challenge
+- deny
+- goodbye
+- greet
+- mood_great
+- mood_unhappy
+- product_check
+- product_list
+- search_product
+- thankyou
+- weather_recommendations
+- get_weather
+responses:
+  utter_greet:
+  - text: Hey! How you feeling 🥹?
+  utter_cheer_up:
+  - text: 'Here is something to cheer you up:'
+    image: https://i.imgur.com/igt12tf.jpeg
+  utter_did_that_help:
+  - text: Did that help you 😊?
+  utter_happy:
+  - text: Great, How can I help you?
+  utter_any_other:
+  - text: Anything else? 🤭
+  utter_welcome:
+  - text: Welcome!! Thank you for using SalesmanBot :)
+  utter_goodbye:
+  - text: Bye... 👋
+  utter_iamabot:
+  - text: My name is Alice the SalesmanBot 🤖, powered by Rasa Framework.
+  utter_check_products:
+  - text: We have daily products. Do you want to check the product list?
+  utter_sorry:
+  - text: Sorry!! 🥴 I didn't get that.
+  utter_thanking:
+  - text: Thank you for using SalesmanBot 🥰. Keep using. Talk to you later ☺.
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+actions:
+- action_get_brands
+- action_get_productlist
+- action_hello_world
+- action_search_product
+- action_Greet_byTime
+- action_weather_based_products
+- action_tell_weather
+- utter_any_other
+- utter_check_products
+- utter_cheer_up
+- utter_did_that_help
+- utter_goodbye
+- utter_greet
+- utter_happy
+- utter_iamabot
+- utter_welcome
+entities:
+- product
